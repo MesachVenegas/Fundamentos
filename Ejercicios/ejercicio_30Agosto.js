@@ -4,22 +4,21 @@ La idea es que antes de que ejecuten el archivo para visualizar el console.log()
 */
 
 
-console.log(2 + '2') //4
 
 //Recuerda que cuando tenemos mas de una operación envuelta se involucra la jerarquía de operaciones.
 //Cuando tenemos la misma operación (en este caso un +), entonces las operaciones se ejecutan de izquierda a derecha
 /*
-console.log(1 + 1 + '2') //
-console.log('2' + 1 + 1) //
-console.log(true + true) //
-console.log(true / null) //
-console.log('20' - true) //
-console.log(true + '20') //
-console.log(25 + undefined) //
-
-//¿Qué hace en este caso el operador +?
-//Ejecuta el console.log() y a partir del resultado saca tus conclusiones
-console.log( +true ) //
+console.log(2 + '2') // ==> 22
+console.log(1 + 1 + '2') // ==> 22
+console.log('2' + 1 + 1) // ==> 211
+console.log(true + true) // ==> 2
+console.log(true / null) // ==> Infinity
+console.log('20' - true) // ==> 19
+console.log(true + '20') // ==> true20
+console.log(25 + undefined) // ==> Nan
+¿Qué hace en este caso el operador +?
+Ejecuta el console.log() y a partir del resultado saca tus conclusiones
+console.log(+true) //
 
 console.log(5 > 4) //
 console.log('banco' < 'barco') //
