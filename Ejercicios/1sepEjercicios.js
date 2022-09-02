@@ -1,5 +1,4 @@
 //* Tarea moral de hoy:
-
 //* Ejercicio 1
 /*
     Genera una variable que almacene una frase cualquiera
@@ -18,7 +17,7 @@ console.log(chart);
 */
 let lastChart = phrase[phrase.length -1].toLowerCase();
 let isVocal = lastChart === "a" || lastChart === "e" || lastChart === "i" || lastChart === "o" || lastChart === "u";
-console.log(isVocal);
+console.log(isVocal != false && `La vocal es ${lastChart}`);
 
 //* Ejercicio 3
 /*
