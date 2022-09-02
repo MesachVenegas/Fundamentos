@@ -4,7 +4,7 @@
 let userName;
 // console.log(userName);
 
-let text = "Hola como están?"
+let text = "Hola como están?";
 // console.log(text[100]);
 
 let fruitsArray = ["Fresa", "Mango"];
@@ -36,7 +36,7 @@ let userAge = null;
     console.log(false ?? "Definido"); // ==> false ya que es un valor definido también = 0.
     console.log((null ?? undefined) ?? "Brenda") ==> Brenda
 */
-userName = "Mesach Venegas"
+userName = "Mesach Venegas";
 // console.log(`Hola ${userName ?? "Usuario"}, Bienvenido!`);
 
 
