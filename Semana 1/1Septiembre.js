@@ -43,3 +43,36 @@ userName = "Mesach Venegas"
 const count = 0;
 // console.log(null ?? count ?? 35);
 console.log(!"Mesach");
+/*
+    Truthy: Todos los datos tienen un valor de verdad intrínseco, sin necesidad de ser booleanos.
+    Valores considerados true:
+        "false"
+        "0"
+        " "
+        []
+        {}
+        Infinity
+        -Infinity
+        Negative Numbers
+
+    Falsy Aquellos que se consideran false.
+    Valores considerados false.
+        false
+        0
+        -0
+        null
+        undefined
+        NaN
+        "", '', ``
+*/
+
+//* AND(&&)
+console.log(0 && "Truthy"); // false & Truthy
+console.log(100 && "Texto");// truthy & truthy ==> el segundo.
+console.log("uno" && "dos" && "tres"); // ("uno && "dos) && "tres" ==> "dos" && "tres" ==> "tres"
+
+//* OR
+console.log(0 || "Truthy"); // Devuelve el segundo ==> "Truthy"
+console.log(100 || "Texto");// Devuelve el primero ==> 100
+console.log(0 || undefined); // Devuelve el primero ==>  Undefined
+console.log();
