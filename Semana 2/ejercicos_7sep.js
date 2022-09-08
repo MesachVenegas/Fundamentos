@@ -54,9 +54,7 @@ multiplication(7)
 function randomWord(phrase){
     let list_phrase = phrase.split(" ")
     let reverse_phrase = [];
-    for(let i = phrase.length - 1; i >= 0; i--){
-        reverse_phrase.push(list_phrase[i])
-    }
+    for(let i = phrase.length - 1; i >= 0; i--){reverse_phrase.push(list_phrase[i])}
     return reverse_phrase.join(" ").trim()
 
 //* Mi solución.
