@@ -70,18 +70,33 @@ let add_delete = colors.splice(2, 2, "Negro", "Cyan");
 let song = "Soy pésimo para fingir pero puedo escribir y no quiero incomodarte pero no puedo mentir"
 // "" si se usa eso devolverá un arreglo con cada uno de los caracteres del strign.
 let stringToArray = song.split(" ");
-console.log(stringToArray);
+// console.log(stringToArray);
 
+// Includes determina si un elemento existe o no existe dentro de un array y su valor de retorno es un booleano.
+// array.include(elemento)
+let arrayWords = song.split(" ");
+// console.log(arrayWords);
+// console.log(arrayWords.includes("no")); // ==> true.
+// console.log(arrayWords.includes("gatos")); // ==> false.
 
+// array.indexOf(elemento) ==> buscara los elementos que coincida con la busqueda realizada y nos retornara su indice.
+// console.log(arrayWords.indexOf("no"));
+
+// arrays.lastIndexOf(elemento)
+// arrays.join("separador") ==> genera una cadena de texto a partir de un array.
+// console.log(arrayWords.join(" "));
 
 /**
     Crear una funcion que reciba dos parametros, el primero sera una frase y el segundo una palabra.
-    La funcion debe eliminar la palabra señalada de ;a frase y retormar la frase modificada(cadena de texto)
+    La funcion debe eliminar la palabra señalada de la frase y retormar la frase modificada(cadena de texto)
 */
 function deleteWord(phrase, word){
-    
+    let array_phrase = phrase.split(" ");
+    let index_word = array_phrase.indexOf(word);
+    array_phrase.splice(index_word, 1);
+    phrase = array_phrase.join(" ");
+    return phrase
 }
-// Me gustan mucho los gatos que ronronean, gatos --> me gustan mucho los que ronronean.
-
-let phrase = "Me gustan mucho los gatos que ronronean"
+// me gustan mucho los gatos que ronronean, gatos ==> me gustan mucho los que ronronean.
+let phrase = "me gustan mucho los gatos que ronronean";
 console.log(deleteWord(phrase, "gatos"));
