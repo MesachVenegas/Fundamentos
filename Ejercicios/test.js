@@ -151,14 +151,9 @@ const students_age = [
 function findMostCommonAge(students) {
     let ages = {};
     for(let i= 0; i < students.length; i++){
-        if(ages[students[i].age] ==  students[i].age){
-            ages[students[i].age] += 1;
-        }else{
-            ages[students[i].age] = 1;
-        }
+        ages[students[i].age] = 1;
     }
     return ages;
-
 }
 
 // console.log(findMostCommonAge(students_age));
@@ -220,3 +215,88 @@ let register = [
         }
     }
 ];
+
+function getApplications(users){
+    let send = [];
+    for(let i= 0; i < users.length; i++){
+        if(users[i].application != null){
+            send.push(users[i])
+        }
+    }
+    return send;
+}
+
+console.log(getApplications(register));
+
+/*
+La función sumEvens() recibe como parámetros dos números:
+    Tu labor es sumar todos los números pares que se encuentren en el rango de los números recibidos, sin incluir a los dos números recibidos.
+Ejemplo:
+    Si tu función recibe 20 y 30 deberías retornar 100, ya que los números pares entre 20 y 30 son 22, 24, 26, 28 y la suma de todos estos números es 100.
+    - Recuerda utilizar return para devolver tu solución.
+    - El segundo número recibido siempre será mayor al primero.
+*/
+
+function sumEvens(start, end){
+    let sum = 0;
+    for( let i = start + 1; i < end; i++){
+        if(i %2 === 0){
+            sum += i;
+        }
+    }
+    return sum
+}
+
+// console.log(sumEvens(20, 30))
+
+
+/*
+La función getMultiples() recibe como parámetros dos números:
+    Tu labor es encontrar todos los múltiplos del primer número(sin incluir este número) recibido siempre y cuando sean menores al segundo número recibido.
+Ejemplo:
+    Si la función recibe 20 y 100 deberías retornar un arreglo como el siguiente[40, 60, 80], ya que esos son todos los múltiplos del 20 menores a 100.
+    - Recuerda utilizar return para devolver tu solución.
+    - Los números que recibe la función podrán ser dos números cualesquiera.
+*/
+
+function getMultiples(start, end){
+    let multiples = [];
+    for(let i = start +1; i < end; i++){
+        if(i %start === 0){
+            multiples.push(i)
+        }
+    }
+    return multiples;
+}
+
+// console.log(getMultiples(20, 100));
+
+/*
+La función countLetter() recibe como parámetros dos strings:
+    El primer string es una frase cualquiera.
+
+El segundo string es una letra cualquiera.
+Tu labor es encontrar cuántas veces se repite la letra en el string.
+
+Ejemplo:
+    Si tu función recibe como frase "Hola, me llamo Erik" y como letra "a" debes retornar 2, ya que la letra "a" se encuentra 2 veces en la frase.
+
+    - Recuerda utilizar return para devolver tu solución.
+    - Tu solución debe de funcionar para cualquier frase y cualquier letra.
+*/
+
+let phrase = "Hola, me llamo Erik";
+let letter = 'a';
+
+function countLetter(phrase, letter){
+    let counter = 0;
+    phrase.split(' ');
+    for(let i = 0; i < phrase.length; i++){
+        if(phrase[i] === letter){
+            counter += 1;
+        }
+    }
+    return counter;
+}
+
+// console.log(countLetter(phrase, letter))
