@@ -144,19 +144,36 @@ const students_age = [
     {name: 'Daniela',age: 25},
     {name: 'Andrea',age: 23},
     {name: 'Jose',age: 27},
+    {name: 'Jose',age: 27},
+    {name: 'Jose',age: 27},
     {name: 'Geogr',age: 23},
 
 ];
 
 function findMostCommonAge(students) {
     let ages = {};
+    let age_max;
+    let rep = 0;
     for(let i= 0; i < students.length; i++){
-        ages[students[i].age] = 1;
+        let common = Object.keys(ages);
+        if(common.includes(String(students[i].age))){
+            ages[students[i].age] += 1;
+        }else{
+            ages[students[i].age] = 1;
+        }
     }
-    return ages;
+    for(let age in ages){
+        if(ages[age] > rep){
+            age_max = age;
+            rep = ages[age];
+        }
+    }
+    return  parseInt(age_max);
+    // let values = Object.values(ages)
+    // let result = Math.max.apply(null,values)
 }
 
-// console.log(findMostCommonAge(students_age));
+console.log(findMostCommonAge(students_age));
 
 
 /*
@@ -226,7 +243,7 @@ function getApplications(users){
     return send;
 }
 
-console.log(getApplications(register));
+// console.log(getApplications(register));
 
 /*
 La función sumEvens() recibe como parámetros dos números:
@@ -300,3 +317,63 @@ function countLetter(phrase, letter){
 }
 
 // console.log(countLetter(phrase, letter))
+
+
+/*
+La función countApplicationsBychannel() recibe como parámetro un arreglo de usuarios
+Tu labor es contar cuántas aplicaciones hay por cada canal, para esto debes apoyarte en la propiedad channel.
+Algo muy importante es que solo tomaremos en cuenta a los usuarios que hayan enviado su aplicación, si no tienen aplicación no es de nuestro interés saber mediante que canal nos conocieron.
+
+*/
+const students_social = [
+    {
+        name: 'Andrea',
+        email: 'andrea@gmail.com',
+        channel: 'youtube',
+        application: null
+    },
+    {
+        name: 'Daniela',
+        email: 'daniela@gmail.com',
+        channel: 'youtube',
+        application: {
+            country: 'Colombia',
+            state: 'Bogotá'
+        }
+    },
+    {
+        name: 'Alondra',
+        email: 'alondra@gmail.com',
+        channel: 'twitter',
+        application: {
+            country: 'Colombia',
+            state: 'Bogotá'
+        }
+    },
+    {
+        name: 'Luis',
+        email: 'luisa@gmail.com',
+        channel: 'twitter',
+        application: {
+            country: 'México',
+            state: 'Nuevo León'
+        }
+    }
+];
+
+function countApplicationsBychannel(students){
+    const redes = {}
+    for(let i = 0; i < students.length; i++){
+        if(students[i].application != null){
+            let keys = Object.keys(redes);
+            if(keys.includes(students[i].channel)){
+                redes[students[i].channel] += 1;
+            }else{
+                redes[students[i].channel] = 1;
+            }
+        }
+    }
+    return redes;
+}
+
+// console.log(countApplicationsBychannel(students_social));
