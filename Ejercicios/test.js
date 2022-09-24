@@ -152,7 +152,7 @@ const students_age = [
 
 function findMostCommonAge(students) {
     let ages = {};
-    let age_max;
+    let age_max= null;
     let rep = 0;
     for(let i= 0; i < students.length; i++){
         let common = Object.keys(ages);
