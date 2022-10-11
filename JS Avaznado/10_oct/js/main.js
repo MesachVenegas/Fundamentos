@@ -1,90 +1,151 @@
+//Permanncia de informacion en el navegador
+//Almacenar informacion 
 
-//  Almacenar información en el navegador.
-//  Se usa para no perder información anteriormente cargada.
+//window -> Representa al navegador
+//localStorage 
+//Los datos no tienen fecha de expiracion
 
-// Window => representa al navegador
+//sessionStorage
+//La informacion solo se guarda mientra la sesion siga activa. En cuanto la venta se ciera, la informacion se pierde
+
+//stripe, conekta
+
+
+// JSON -> JavaScript Object Notation -> Notacion de objetos de Javascript
+//Formato de TEXTO
+
+//Algo que NO es JSON --> JSON
+//JSON.stringify( dato ) --> dato en formato JSON
+let JSONString = JSON.stringify("Hola mundo!")
+//console.log( JSONString )
+
+let JSONNumber = JSON.stringify(100)
+//console.log(JSONNumber)
+
+let JSONArray = JSON.stringify([1, 2, 3])
+//console.log(JSONArray)
+
+let JSONObject = JSON.stringify({
+    name: "Brenda",
+    age: 27
+})
+//console.log(JSONObject)
+
+//JSON.parse( JSON ) --> datos en su formato original
 /*
-    localStorage => los datos no tiene fecha de expiración pero están asociados a un dominio y aun que el navegador se cierre la información continuara siendo almacenada.
+console.log( JSON.parse( JSONString ) )
+console.log( JSON.parse( JSONNumber ) )
+console.log( JSON.parse( JSONArray ) )
+console.log( JSON.parse( JSONObject ) )
 
-    sessionStorage => los datos solo se guardan mientras la session siga activa, una vez se cierra la ventana la información se pierde.
 */
-// stripe, conekta pasarelas de pago
 
-// JSON --> JavaScript Object Notation (Es un formato de texto.)
-
-let jsonString = JSON.stringify("Hola Mundo");
-let jsonNumber = JSON.stringify(100);
-let jsonArray = JSON.stringify([1,2,3,4]);
-let jsonObject = JSON.stringify({
-    name: "Mesach",
-    age:29});
-// console.log(jsonString);
-// console.log(jsonNumber);
-// console.log(jsonArray);
-// console.log(jsonObject);
-
-// JSON.parse(json) => datos en su formato original.
-// console.log(JSON.parse(jsonString));
+//METODOS PARA EL STORAGE
 
 
-// Metodos para el Storage
 const user = {
-    name: "Mesach",
-    age: 29
+    name: "Brenda",
+    age: 27
 }
-// CRUD
-//* Create (Generar información y guardarla en el navegador)
-   // window.localStorage.setItem("nombrePropiedad","valorPropiedad")
-    // localStorage.setItem("user", JSON.stringify(user))
-    // localStorage.setItem("favoriteBand", JSON.stringify("Linkin Park"))
-    // localStorage.setItem("saludo", JSON.stringify("Hola Soy Mesach Venegas y tengo 29 años"))
-    // localStorage.setItem("cart", JSON.stringify(['galletas', 'choclate', 'helado']))
+/*
+*CREAR
+window.localStorage.setItem( "nombrePropiedad", valorAGuardarJSON )
 
-//* Read (Leer información anteriormente guradada en el navegador)
-    // console.log(localStorage.getItem("user"))
-    // console.log(localStorage.getItem("favoriteBand"))
-    // console.log(localStorage.getItem("saludo"));
+localStorage.setItem( "user", JSON.stringify( user ) )
+localStorage.setItem( "bandaFavorita", JSON.stringify( "Iron Maiden" ) )
 
-//* Update (Modificar datos anteriormente guardados en el navegador)
-    let cartNow = JSON.parse(localStorage.getItem("cart"));
-    console.log(cartNow);
-    cartNow.push('pastel');
-    localStorage.setItem("cart", JSON.stringify(cartNow))
-
-//* Delete (Eliminar información almacenada en el navegador)
+localStorage.setItem( "cart", JSON.stringify( ["galletas", "chocolate", "helado"] ) )
+Generar un objeto con su información, nombre, edad y correo, y alamacenarlo
 
 
+*CONSULTAR
+window.localStorage.getItem( "datoAConsultar" )
+console.log( JSON.parse( localStorage.getItem( "bandaFavorita" ) ) )
+Mostrar en la consola una cadena de texto que diga: "Hola, soy -suNombre- y tengo -suEdad- años"
+let dataUser = JSON.parse( localStorage.getItem( "user" ) )
+console.log( `Hola, soy ${dataUser.name} y tengo ${dataUser.age} años` )
 
 
-// obtenemos el elemento en el HTML.
-const list = document.getElementById('product-list')
+*ACTUALIZAR
+window.localStorage.setItem( "nombreDeLaPropiedadAModificar", nuevoValorAGuardar )
 
-const getStorageInfo = () => {
-    let cart = localStorage.getItem("cart");
+function addProduct(product) {
+    let cartActual = JSON.parse( localStorage.getItem( "cart" ) )
+    cartActual.push(product)
 
-    if(cart){
+    localStorage.setItem( "cart", JSON.stringify(cartActual) )
+}
+
+addProduct( "pastel" )
+addProduct("pan dulce")
+addProduct( "pizza" )
+
+
+localStorage.setItem( "bandaFavorita", JSON.stringify( "Nightwish" ) )
+
+*ELIMINAR
+window.localStorage.removeItem( "nombrePropiedadAEliminar" )
+localStorage.removeItem( "bandaFavorita" )
+
+window.localStorage.clear()
+console.log( localStorage.getItem( "comidaFav" ) )
+
+*/
+
+/*
+localStorage.setItem( "cart", JSON.stringify( ["galletas", "chocolate", "helado"] ) )
+
+function addProduct(product) {
+    let cartActual = JSON.parse( localStorage.getItem( "cart" ) )
+    cartActual.push(product)
+
+    localStorage.setItem( "cart", JSON.stringify(cartActual) )
+}
+
+addProduct( "pastel" )
+addProduct("pan dulce")
+addProduct( "pizza" )
+*/
+
+
+function getStorageInfo() {
+    let cart = localStorage.getItem("cart")
+
+    if (cart) {
+        //Es distinto de null
         cart = JSON.parse(cart)
-        if(cart.length !== 0){
-            let fragment = ``;
-            cart.forEach(item => {
-                fragment +=  `<li>${item}</li>`});
-            list.innerHTML= `
-                <ul>
-                    ${fragment}
-                </ul>`;
+        if (cart.length !== 0) {
+            //listar los elementos en DOM
+            showProducts(cart)
         }
-    }else{
+    } else {
+        // Fue null
         localStorage.setItem("cart", JSON.stringify([]))
     }
 }
 
+function addProduct(product) {
+    let cartActual = JSON.parse(localStorage.getItem("cart"))
+    cartActual.push(product)
+    localStorage.setItem("cart", JSON.stringify(cartActual))
 
-function addProduct(product) => {
-    let carActual = JSON.parse(localStorage.getItem("cart"))
-    carActual.push(product)
-    localStorage.setItem("cart", JSON.stringify(carActual));
+
+    showProducts(cartActual)
+}
+
+function showProducts(cart) {
+    const list = document.getElementById("product-list")
+    let fragment = ``
+    cart.forEach(item => {
+        fragment += `<li> ${ item } </li>`
+    })
+    list.innerHTML = `
+        <ul>
+            ${ fragment }
+        </ul>
+    `
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    getStorageInfo();
+    getStorageInfo()
 })
